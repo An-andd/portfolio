@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowDown, Download, Mail, Github, Linkedin, Code2, Award, MapPin, Building2, Sparkles, Zap } from 'lucide-react';
+import { ArrowDown, Download, Mail, Github, Linkedin, Code2, Award, MapPin, Building2, Sparkles, Zap, Rocket, GraduationCap } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [displayText, setDisplayText] = useState('');
@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
               </span>
             </div>
 
-            {/* REDUCED NAME SIZE - Much smaller and more conservative sizing */}
+            {/* Name with proper sizing */}
             <div className="mb-8 overflow-hidden">
               <h1 className="font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent leading-none tracking-tight">
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
@@ -119,9 +119,9 @@ const Hero: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               {[
                 { 
-                  label: 'CGPA 7.4', 
-                  sublabel: 'Academic Excellence', 
-                  icon: <Award size={20} />,
+                  label: 'Fresh Graduate', 
+                  sublabel: '2025', 
+                  icon: <GraduationCap size={20} />,
                   accent: 'border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
                 },
                 { 
@@ -131,10 +131,10 @@ const Hero: React.FC = () => {
                   accent: 'border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300'
                 },
                 { 
-                  label: '2025 Graduate', 
-                  sublabel: 'Fresh Talent', 
-                  icon: <Building2 size={20} />,
-                  accent: 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                  label: 'Open to Work', 
+                  sublabel: 'Ready for Opportunities', 
+                  icon: <Rocket size={20} />,
+                  accent: 'border-green-200 dark:border-green-800 text-green-700 dark:text-green-300'
                 }
               ].map((item, index) => (
                 <div
@@ -210,31 +210,56 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right side - Professional photo with sophisticated frame */}
+          {/* Right side - Professional photo with round design */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              {/* Sophisticated photo container */}
-              <div className="w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-2">
-                <div className="w-full h-full rounded-xl overflow-hidden">
+              {/* Round photo container with sophisticated styling */}
+              <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-2 relative group">
+                <div className="w-full h-full rounded-full overflow-hidden relative">
                   <img
-                    src="/images/IMG_4271.PNG"
+                    src="/images/IMG_4613.jpg"
                     alt="Anand Suresh - Computer Science Engineer"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-500"
                   />
+                  
+                  {/* Subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 </div>
               </div>
 
-              {/* Professional availability badge */}
-              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-white dark:bg-gray-800 border border-green-200 dark:border-green-800 rounded-full shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Available for opportunities</span>
+              {/* Orbiting elements around the circular photo */}
+              <div className="absolute inset-0 animate-spin-slow">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse shadow-lg"></div>
+                </div>
+                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+                  <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse shadow-lg"></div>
+                </div>
+                <div className="absolute top-1/2 -left-4 transform -translate-y-1/2">
+                  <div className="w-3 h-3 bg-indigo-500 rounded-full animate-pulse shadow-lg"></div>
+                </div>
+                <div className="absolute top-1/2 -right-4 transform -translate-y-1/2">
+                  <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse shadow-lg"></div>
                 </div>
               </div>
 
-              {/* Subtle decorative elements */}
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full opacity-60 animate-pulse"></div>
-              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-indigo-500 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '1s' }}></div>
+              {/* Floating tech icons around the photo */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[
+                  { icon: Code2, position: '-top-8 -left-8', color: 'text-blue-500', delay: '0s' },
+                  { icon: Sparkles, position: '-top-8 -right-8', color: 'text-purple-500', delay: '1s' },
+                  { icon: Zap, position: '-bottom-8 -left-8', color: 'text-indigo-500', delay: '2s' },
+                  { icon: Award, position: '-bottom-8 -right-8', color: 'text-cyan-500', delay: '3s' },
+                ].map(({ icon: Icon, position, color, delay }, index) => (
+                  <div
+                    key={index}
+                    className={`absolute ${position} ${color} animate-float bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg border border-gray-200 dark:border-gray-700`}
+                    style={{ animationDelay: delay, animationDuration: '4s' }}
+                  >
+                    <Icon size={20} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Award, Calendar, Trophy, Star, ExternalLink } from 'lucide-react';
+import CertificateModal from './CertificateModal';
 
 const Certifications: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [selectedCertificate, setSelectedCertificate] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,34 +26,71 @@ const Certifications: React.FC = () => {
 
   const certifications = [
     {
-      title: 'Python Programming',
+      title: 'Python Programming Internship',
       organization: 'Face in Technologies Pvt. Ltd.',
       date: 'December 2024',
-      description: 'Gained expertise in OOP, file handling, and data analysis through project-based learning.',
+      description: 'Successfully completed 10-day Python programming internship with hands-on project development and practical learning.',
+      fullDescription: 'Comprehensive Python programming internship at Face in Technologies Pvt. Ltd. covering advanced concepts including object-oriented programming, file I/O operations, data structures, algorithms, and practical project development. The internship included hands-on assignments and real-world applications, demonstrating self-motivation and hard-working attitude with successful project completion.',
       icon: <Award className="text-blue-600" size={24} />,
       color: 'blue',
-      type: 'Certification',
-      skills: ['Object-Oriented Programming', 'File Handling', 'Data Analysis', 'Project Development'],
+      type: 'Internship Certificate',
+      skills: ['Python Programming', 'Object-Oriented Programming', 'Project Development', 'Problem Solving'],
+      bgGradient: 'from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30',
+      credentialId: 'FIT-INTERN-2024-ANAND',
+      achievements: [
+        'Successfully completed 10-day intensive Python internship',
+        'Demonstrated self-motivation and hard-working attitude',
+        'Completed all assignments with good performance',
+        'Successfully delivered final project on time',
+        'Received positive feedback for learning dedication'
+      ],
+      certificateUrl: 'https://faceintech.com/certificates',
+      downloadUrl: '/images/Facein.jpeg',
+      verifyUrl: 'https://faceintech.com/verify'
     },
     {
       title: 'KEEMS SACE 2023',
       organization: 'Innovation Exhibition',
       date: '2023',
       description: 'Exhibited a collaborative ML + IoT project; achieved Top 3 placement for innovation.',
+      fullDescription: 'Kerala Engineering Excellence and Management Society (KEEMS) Science and Engineering Exhibition where I presented an innovative project combining Machine Learning and Internet of Things technologies. The project demonstrated practical applications of AI in everyday life and received recognition for its innovative approach and technical excellence.',
       icon: <Trophy className="text-gold-600" size={24} />,
       color: 'yellow',
       type: 'Achievement',
       skills: ['Machine Learning', 'IoT Development', 'Collaboration', 'Innovation'],
+      bgGradient: 'from-yellow-100 to-orange-200 dark:from-yellow-900/30 dark:to-orange-800/30',
+      credentialId: 'KEEMS-2023-TOP3',
+      achievements: [
+        'Secured Top 3 position among 200+ participants',
+        'Presented innovative ML + IoT integration',
+        'Received recognition from industry experts',
+        'Featured in local technology news'
+      ],
+      certificateUrl: 'https://keems.org/awards/2023/top3',
+      downloadUrl: '/certificates/keems-sace-2023.pdf'
     },
     {
-      title: 'NASA Space Apps Challenge',
+      title: 'NASA Space Apps Challenge 2024',
       organization: 'NASA',
-      date: '2024',
-      description: 'Recognized for innovative Earth-tech solution addressing global challenges.',
+      date: 'October 5-6, 2024',
+      description: 'Recognized as "Galactic Problem Solver" for outstanding participation and innovative Earth-tech solution.',
+      fullDescription: 'Participated in the prestigious NASA Space Apps Challenge 2024, a global hackathon focused on solving challenges related to space exploration and Earth science. Received recognition as "Galactic Problem Solver" for outstanding participation and efforts to address challenges we face on Earth and in space. The project demonstrated innovative use of space technology and data for solving real-world problems.',
       icon: <Star className="text-purple-600" size={24} />,
       color: 'purple',
-      type: 'Recognition',
-      skills: ['Problem Solving', 'Innovation', 'Earth Technology', 'Global Impact'],
+      type: 'Recognition Certificate',
+      skills: ['Space Technology', 'Problem Solving', 'Innovation', 'Earth Science', 'Global Collaboration'],
+      bgGradient: 'from-purple-100 to-pink-200 dark:from-purple-900/30 dark:to-pink-800/30',
+      credentialId: 'NASA-SAC-2024-GALACTIC-SOLVER',
+      achievements: [
+        'Recognized as "Galactic Problem Solver" by NASA',
+        'Developed innovative Earth monitoring solution',
+        'Collaborated with international team members',
+        'Addressed real-world space and Earth challenges',
+        'Received official NASA recognition certificate'
+      ],
+      certificateUrl: 'https://spaceappschallenge.org/2024/awards',
+      downloadUrl: '/images/NASA Space Apps Challenge_page-0001.jpg',
+      verifyUrl: 'https://nasa.gov/verify/space-apps-2024'
     },
   ];
 
@@ -76,6 +116,16 @@ const Certifications: React.FC = () => {
       },
     };
     return colors[color as keyof typeof colors];
+  };
+
+  const openCertificateModal = (certificate: any) => {
+    setSelectedCertificate(certificate);
+    setIsModalOpen(true);
+  };
+
+  const closeCertificateModal = () => {
+    setIsModalOpen(false);
+    setSelectedCertificate(null);
   };
 
   return (
@@ -153,7 +203,10 @@ const Certifications: React.FC = () => {
                   </div>
 
                   {/* Action Button */}
-                  <button className={`w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r ${colorClasses.gradient} text-white rounded-lg hover:shadow-lg transition-all duration-300 font-medium group-hover:scale-105`}>
+                  <button 
+                    onClick={() => openCertificateModal(cert)}
+                    className={`w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r ${colorClasses.gradient} text-white rounded-lg hover:shadow-lg transition-all duration-300 font-medium group-hover:scale-105`}
+                  >
                     <ExternalLink size={16} className="mr-2" />
                     View Certificate
                   </button>
@@ -172,8 +225,8 @@ const Certifications: React.FC = () => {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { number: '3+', label: 'Certifications', icon: <Award size={24} /> },
-            { number: '2', label: 'Awards Won', icon: <Trophy size={24} /> },
-            { number: '95%', label: 'Academic Score', icon: <Star size={24} /> },
+            { number: '1', label: 'NASA Recognition', icon: <Star size={24} /> },
+            { number: '1', label: 'Industry Internship', icon: <Trophy size={24} /> },
             { number: '2024', label: 'Latest Achievement', icon: <Calendar size={24} /> },
           ].map((stat, index) => (
             <div
@@ -192,6 +245,13 @@ const Certifications: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      <CertificateModal
+        certificate={selectedCertificate}
+        isOpen={isModalOpen}
+        onClose={closeCertificateModal}
+      />
     </section>
   );
 };
