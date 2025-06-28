@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowDown, Download, Mail, Github, Linkedin, Sparkles, Zap, Code2 } from 'lucide-react';
+import { ArrowDown, Download, Mail, Github, Linkedin, Code2, Award, MapPin, Building2 } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const heroRef = useRef<HTMLElement>(null);
-  const fullText = "Turning code into impact-driven innovation.";
+  const fullText = "Innovative Computer Science Engineer specializing in AI, IoT, and Full-Stack Development";
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         setDisplayText(fullText.slice(0, currentIndex + 1));
         setCurrentIndex(currentIndex + 1);
       }
-    }, 80);
+    }, 60);
 
     return () => clearTimeout(timer);
   }, [currentIndex, fullText]);
@@ -31,151 +31,186 @@ const Hero: React.FC = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const FloatingIcon = ({ icon: Icon, delay, className }: { icon: any, delay: number, className: string }) => (
-    <div 
-      className={`absolute ${className} animate-float opacity-20 dark:opacity-30`}
-      style={{ animationDelay: `${delay}s`, animationDuration: '4s' }}
-    >
-      <Icon size={24} />
-    </div>
-  );
+  const scrollToAbout = () => {
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section 
       id="home" 
       ref={heroRef}
-      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 flex items-center justify-center"
+      className="min-h-screen relative bg-white dark:bg-gray-900 flex items-center justify-center pt-24 pb-16"
     >
-      {/* Animated floating icons */}
-      <FloatingIcon icon={Code2} delay={0} className="top-20 left-20 text-blue-500" />
-      <FloatingIcon icon={Zap} delay={1} className="top-32 right-32 text-purple-500" />
-      <FloatingIcon icon={Sparkles} delay={2} className="bottom-40 left-40 text-pink-500" />
-      <FloatingIcon icon={Github} delay={0.5} className="top-60 right-20 text-gray-600" />
-      <FloatingIcon icon={Code2} delay={1.5} className="bottom-20 right-60 text-indigo-500" />
-
-      {/* Animated background blobs */}
+      {/* Sophisticated background with subtle color */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-40 w-96 h-96 bg-gradient-to-r from-pink-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900"></div>
+        
+        {/* Elegant geometric patterns */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-100/20 to-transparent dark:from-blue-900/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-indigo-100/20 to-transparent dark:from-indigo-900/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        {/* Animated entrance */}
-        <div className="animate-fade-in-up">
-          {/* Greeting with wave animation */}
-          <div className="mb-6">
-            <span className="text-2xl md:text-3xl">
-               <span className="inline-block animate-bounce"></span>
-            </span>
-          </div>
-
-          {/* Main name with gradient and scale animation */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 transform hover:scale-105 transition-transform duration-300">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent animate-pulse-glow">
-              Anand
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-              Suresh
-            </span>
-          </h1>
-          
-          {/* Animated role badges */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {['Developer', 'AI Enthusiast', 'IoT Creator', 'CSE Student'].map((role, index) => (
-              <span
-                key={role}
-                className="px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:scale-110 transition-transform duration-300 cursor-default"
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                {role}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left side - Professional Content */}
+          <div className="text-center lg:text-left">
+            {/* Professional badge with proper spacing */}
+            <div className="mb-6">
+              <span className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-semibold shadow-sm">
+                <Building2 className="mr-2 text-blue-600" size={18} />
+                Computer Science Engineer
               </span>
-            ))}
-          </div>
+            </div>
 
-          {/* Location with animated pin */}
-          <div className="flex items-center justify-center mb-8 text-lg text-gray-600 dark:text-gray-400">
-            <span className="animate-bounce mr-2">📍</span>
-            Kochi, Kerala
-          </div>
-
-          {/* Typewriter effect */}
-          <div className="h-20 flex items-center justify-center mb-12">
-            <p className="text-2xl md:text-3xl lg:text-4xl text-gray-700 dark:text-gray-300 font-medium">
-              {displayText}
-              <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>|</span>
-            </p>
-          </div>
-
-          {/* Interactive action buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            <button
-              onClick={scrollToProjects}
-              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden"
-            >
-              <span className="relative z-10 flex items-center">
-                <Sparkles className="mr-2 group-hover:animate-spin" size={20} />
-                See My Work
+            {/* PROFESSIONAL NAME - Fixed sizing to ensure full visibility */}
+            <h1 className="mb-8 leading-none tracking-tight overflow-hidden">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent">
+                Anand Suresh
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
+            </h1>
             
-            <a
-              href="mailto:callmeanand5@gmail.com"
-              className="group px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-full font-semibold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transform hover:scale-110 transition-all duration-300 relative overflow-hidden"
-            >
-              <span className="relative z-10 flex items-center">
-                <Download className="mr-2 group-hover:animate-bounce" size={20} />
-                Download Resume
-              </span>
-            </a>
-          </div>
+            {/* Professional subtitle with elegant color accent */}
+            <div className="mb-10">
+              <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium leading-relaxed max-w-2xl">
+                {displayText}
+                <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 text-blue-600`}>|</span>
+              </p>
+            </div>
 
-          {/* Animated social links */}
-          <div className="flex justify-center space-x-8 mb-16">
-            {[
-              { icon: Mail, href: 'mailto:callmeanand5@gmail.com', color: 'hover:text-red-500' },
-              { icon: Github, href: 'https://github.com/An-andd', color: 'hover:text-gray-900 dark:hover:text-white' },
-              { icon: Linkedin, href: 'https://linkedin.com/in/anand-suresh-8b8a73325', color: 'hover:text-blue-600' },
-            ].map(({ icon: Icon, href, color }, index) => (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-2xl transform hover:scale-125 hover:rotate-12 transition-all duration-300 ${color}`}
-                style={{ animationDelay: `${index * 200}ms` }}
+            {/* Professional credentials with subtle color accents */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { 
+                  label: 'CGPA 7.4', 
+                  sublabel: 'Academic Excellence', 
+                  icon: <Award size={20} />,
+                  accent: 'border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                },
+                { 
+                  label: '3+ Projects', 
+                  sublabel: 'Real-world Impact', 
+                  icon: <Code2 size={20} />,
+                  accent: 'border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300'
+                },
+                { 
+                  label: '2025 Graduate', 
+                  sublabel: 'Fresh Talent', 
+                  icon: <Building2 size={20} />,
+                  accent: 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                }
+              ].map((item, index) => (
+                <div
+                  key={item.label}
+                  className={`text-center p-6 bg-white dark:bg-gray-800 rounded-xl border-2 ${item.accent} shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1`}
+                >
+                  <div className="flex justify-center mb-3">{item.icon}</div>
+                  <div className="text-lg font-bold text-gray-900 dark:text-white">{item.label}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">{item.sublabel}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Location with professional styling */}
+            <div className="flex items-center justify-center lg:justify-start mb-12 text-gray-600 dark:text-gray-400">
+              <MapPin size={20} className="mr-3 text-blue-600" />
+              <span className="font-medium text-lg">Kochi, Kerala, India</span>
+            </div>
+
+            {/* Professional action buttons with sophisticated styling */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+              <button
+                onClick={scrollToProjects}
+                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
               >
-                <Icon size={24} className="group-hover:animate-pulse" />
+                <Code2 className="mr-2" size={20} />
+                View Portfolio
+              </button>
+              
+              <a
+                href="/AnandResume (1).pdf"
+                download="Anand_Suresh_Resume.pdf"
+                className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg font-semibold transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 flex items-center justify-center"
+              >
+                <Download className="mr-2" size={20} />
+                Download Resume
               </a>
-            ))}
+            </div>
+
+            {/* Professional social links with elegant styling */}
+            <div className="flex justify-center lg:justify-start space-x-4">
+              {[
+                { 
+                  icon: Mail, 
+                  href: 'mailto:callmeanand5@gmail.com', 
+                  label: 'Email',
+                  hoverColor: 'hover:bg-red-50 hover:border-red-200 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:border-red-800 dark:hover:text-red-400'
+                },
+                { 
+                  icon: Github, 
+                  href: 'https://github.com/An-andd', 
+                  label: 'GitHub',
+                  hoverColor: 'hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:hover:text-white'
+                },
+                { 
+                  icon: Linkedin, 
+                  href: 'https://linkedin.com/in/anand-suresh-8b8a73325', 
+                  label: 'LinkedIn',
+                  hoverColor: 'hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 dark:hover:bg-blue-900/20 dark:hover:border-blue-800 dark:hover:text-blue-400'
+                },
+              ].map(({ icon: Icon, href, label, hoverColor }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-600 dark:text-gray-400 ${hoverColor} transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5`}
+                  title={label}
+                >
+                  <Icon size={24} />
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Animated scroll indicator */}
-          <div className="animate-bounce">
-            <div className="flex flex-col items-center">
-              <span className="text-sm text-gray-500 dark:text-gray-400 mb-2">Scroll to explore</span>
-              <ArrowDown className="text-gray-400 dark:text-gray-500 animate-pulse" size={32} />
+          {/* Right side - Professional photo with sophisticated frame */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Sophisticated photo container */}
+              <div className="w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-2">
+                <div className="w-full h-full rounded-xl overflow-hidden">
+                  <img
+                    src="/images/IMG_4271.PNG"
+                    alt="Anand Suresh - Computer Science Engineer"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              </div>
+
+              {/* Professional availability badge */}
+              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-white dark:bg-gray-800 border border-green-200 dark:border-green-800 rounded-full shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Available for opportunities</span>
+                </div>
+              </div>
+
+              {/* Subtle decorative elements */}
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full opacity-60"></div>
+              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-indigo-500 rounded-full opacity-50"></div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Floating elements for visual interest */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-30 animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
+        {/* Professional scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+          <button
+            onClick={scrollToAbout}
+            className="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+          >
+            <span className="text-sm font-medium mb-2">Learn More</span>
+            <ArrowDown size={24} className="animate-bounce" />
+          </button>
+        </div>
       </div>
     </section>
   );
