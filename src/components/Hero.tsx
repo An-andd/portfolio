@@ -119,8 +119,8 @@ const Hero: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               {[
                 { 
-                  label: 'Fresh Graduate', 
-                  sublabel: '2025', 
+                  label: '2025 Graduate', 
+                  sublabel: 'Fresh Talent', 
                   icon: <GraduationCap size={20} />,
                   accent: 'border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
                 },

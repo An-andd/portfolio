@@ -27,7 +27,7 @@ const About: React.FC = () => {
     { number: '7.4', label: 'CGPA', icon: <GraduationCap size={24} />, color: 'text-blue-500' },
     { number: '95%', label: 'Academic Score', icon: <Award size={24} />, color: 'text-green-500' },
     { number: '3+', label: 'Major Projects', icon: <Lightbulb size={24} />, color: 'text-purple-500' },
-    { number: '2024', label: 'Graduation Year', icon: <Coffee size={24} />, color: 'text-orange-500' },
+    { number: '2025', label: 'Graduation Year', icon: <Coffee size={24} />, color: 'text-orange-500' },
   ];
 
   return (
