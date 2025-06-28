@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowDown, Download, Mail, Github, Linkedin, Code2, Award, MapPin, Building2 } from 'lucide-react';
+import { ArrowDown, Download, Mail, Github, Linkedin, Code2, Award, MapPin, Building2, Sparkles, Zap } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [displayText, setDisplayText] = useState('');
@@ -39,15 +39,51 @@ const Hero: React.FC = () => {
     <section 
       id="home" 
       ref={heroRef}
-      className="min-h-screen relative bg-white dark:bg-gray-900 flex items-center justify-center pt-24 pb-16"
+      className="min-h-screen relative bg-white dark:bg-gray-900 flex items-center justify-center pt-24 pb-16 overflow-hidden"
     >
-      {/* Sophisticated background with subtle color */}
+      {/* Professional animated background with subtle animations */}
       <div className="absolute inset-0">
+        {/* Base gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900"></div>
         
-        {/* Elegant geometric patterns */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-100/20 to-transparent dark:from-blue-900/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-indigo-100/20 to-transparent dark:from-indigo-900/10 rounded-full blur-3xl"></div>
+        {/* Animated floating elements - Professional and subtle */}
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-100/30 to-purple-100/20 dark:from-blue-900/20 dark:to-purple-900/10 rounded-full blur-3xl animate-float opacity-60"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-tl from-indigo-100/30 to-blue-100/20 dark:from-indigo-900/20 dark:to-blue-900/10 rounded-full blur-3xl animate-float opacity-50" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-slate-100/20 to-gray-100/20 dark:from-slate-800/20 dark:to-gray-800/20 rounded-full blur-3xl animate-float opacity-40" style={{ animationDelay: '4s' }}></div>
+        
+        {/* Professional floating icons */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[
+            { icon: Code2, position: 'top-32 left-32', color: 'text-blue-400/30', delay: '0s' },
+            { icon: Sparkles, position: 'top-40 right-40', color: 'text-indigo-400/30', delay: '1s' },
+            { icon: Zap, position: 'bottom-40 left-40', color: 'text-slate-400/30', delay: '2s' },
+            { icon: Award, position: 'bottom-32 right-32', color: 'text-blue-400/30', delay: '3s' },
+          ].map(({ icon: Icon, position, color, delay }, index) => (
+            <div
+              key={index}
+              className={`absolute ${position} ${color} animate-float`}
+              style={{ animationDelay: delay, animationDuration: '6s' }}
+            >
+              <Icon size={24} />
+            </div>
+          ))}
+        </div>
+
+        {/* Subtle animated particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400/20 dark:bg-blue-300/20 rounded-full animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${4 + Math.random() * 2}s`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -62,12 +98,14 @@ const Hero: React.FC = () => {
               </span>
             </div>
 
-            {/* PROFESSIONAL NAME - Fixed sizing to ensure full visibility */}
-            <h1 className="mb-8 leading-none tracking-tight overflow-hidden">
-              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent">
-                Anand Suresh
-              </span>
-            </h1>
+            {/* REDUCED NAME SIZE - Much smaller and more conservative sizing */}
+            <div className="mb-8 overflow-hidden">
+              <h1 className="font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent leading-none tracking-tight">
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+                  Anand Suresh
+                </span>
+              </h1>
+            </div>
             
             {/* Professional subtitle with elegant color accent */}
             <div className="mb-10">
@@ -195,8 +233,8 @@ const Hero: React.FC = () => {
               </div>
 
               {/* Subtle decorative elements */}
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full opacity-60"></div>
-              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-indigo-500 rounded-full opacity-50"></div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full opacity-60 animate-pulse"></div>
+              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-indigo-500 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
         </div>
